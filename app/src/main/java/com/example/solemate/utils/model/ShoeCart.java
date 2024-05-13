@@ -14,4 +14,25 @@ public class ShoeCart {
     private int quantity;
     private double totalItemPrice;
 
+    public String getShoeName() {
+        return shoeName;
+    }
+
+    public void setShoeName(String shoeName) {
+        this.shoeName = shoeName;
+    }
+
+    public String getShoeBrandName() {
+        return shoeBrandName;
+    }
+
+    public void setShoeBrandName(String shoeBrandName) {
+        this.shoeBrandName = shoeBrandName;
+    }
+
+    public int getShoeImage() {
+        return shoeImage;
+    }
+
+
 }
