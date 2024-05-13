@@ -15,6 +15,14 @@ public class ShoeItem implements Parcelable {
         this.shoeImage = shoeImage;
         this.shoePrice = shoePrice;
     }
+
+    protected ShoeItem(Parcel in) {
+        shoeName = in.readString();
+        shoeBrandName = in.readString();
+        shoeImage = in.readInt();
+        shoePrice = in.readDouble();
+    }
+
     public static final Creator<ShoeItem> CREATOR = new Creator<ShoeItem>() {
         @Override
         public ShoeItem createFromParcel(Parcel in) {
@@ -26,6 +34,7 @@ public class ShoeItem implements Parcelable {
             return new ShoeItem[size];
         }
     };
+
     public String getShoeName() {
         return shoeName;
     }

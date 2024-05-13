@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import example.solemate.shoeapp.R;
-import example.solemate.shoeapp.utils.model.ShoeCart;
+import com.example.solemate.R;
+import com.example.solemate.utils.model.ShoeCart;
 
 import java.util.List;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler> {
