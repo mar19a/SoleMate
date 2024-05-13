@@ -33,6 +33,43 @@ public class ShoeCart {
     public int getShoeImage() {
         return shoeImage;
     }
+    public void setShoeImage(int shoeImage) {
+        this.shoeImage = shoeImage;
+    }
+
+    public double getShoePrice() {
+        return shoePrice;
+    }
+
+    public void setShoePrice(double shoePrice) {
+        this.shoePrice = shoePrice;
+    }
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotalItemPrice() {
+        return totalItemPrice;
+    }
+
+    public void setTotalItemPrice(double totalItemPrice) {
+        this.totalItemPrice = totalItemPrice;
+    }
 }
+
+
+
