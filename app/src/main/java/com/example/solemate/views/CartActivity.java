@@ -59,4 +59,34 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         });
     }
 
+    private void initializeVariables() {
+
+        cartAdapter = new CartAdapter(this);
+        textView = findViewById(R.id.textView2);
+        cardView = findViewById(R.id.cartActivityCardView);
+        totalCartPriceTv = findViewById(R.id.cartActivityTotalPriceTv);
+        checkoutBtn = findViewById(R.id.cartActivityCheckoutBtn);
+        cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
+        recyclerView = findViewById(R.id.cartRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(cartAdapter);
+
+    }
+
+    @Override
+    public void onDeleteClicked(ShoeCart shoeCart) {
+        cartViewModel.deleteCartItem(shoeCart);
+    }
+
+    @Override
+    public void onPlusClicked(ShoeCart shoeCart) {
+        int quantity = shoeCart.getQuantity() + 1;
+        cartViewModel.updateQuantity(shoeCart.getId() , quantity);
+        cartViewModel.updatePrice(shoeCart.getId() , quantity*shoeCart.getShoePrice());
+        cartAdapter.notifyDataSetChanged();
+    }
+
+
 }
