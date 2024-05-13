@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == 'com.android') {
+                useVersion '7.1.0'
+            }
+            if (requested.id.id == 'kotlin-android') {
+                useVersion '1.6.10'
+            }
+        }
+    }
+}
+rootProject.name = 'SoleMate'
+include ':app'
