@@ -89,4 +89,24 @@ public class DetailedActivity extends AppCompatActivity {
         startActivity(new Intent(DetailedActivity.this , CartActivity.class));
     }
 
+    private void setDataToWidgets() {
+        shoeNameTV.setText(shoe.getShoeName());
+        shoeBrandNameTV.setText(shoe.getShoeBrandName());
+        shoePriceTV.setText(String.valueOf(shoe.getShoePrice()));
+        shoeImageView.setImageResource(shoe.getShoeImage());
+    }
+
+    private void initializeVariables() {
+
+        shoeCartList = new ArrayList<>();
+        shoeImageView = findViewById(R.id.detailActivityShoeIV);
+        shoeNameTV = findViewById(R.id.detailActivityShoeNameTv);
+        shoeBrandNameTV = findViewById(R.id.detailActivityShoeBrandNameTv);
+        shoePriceTV = findViewById(R.id.detailActivityShoePriceTv);
+        addToCartBtn = findViewById(R.id.detailActivityAddToCartBtn);
+
+        viewModel = new ViewModelProvider(this).get(CartViewModel.class);
+    }
 }
+
+
