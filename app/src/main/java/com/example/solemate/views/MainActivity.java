@@ -73,4 +73,62 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
         shoeItemList.add(new ShoeItem("Adidas Ultraboost", "ADIDAS", R.drawable.adidas_ultraboost, 15));
 
     }
+
+    private void initializeVariables() {
+
+        cartImageView = findViewById(R.id.cartIv);
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
+        shoeCartList = new ArrayList<>();
+        viewModel = new ViewModelProvider(this).get(CartViewModel.class);
+        shoeItemList = new ArrayList<>();
+        recyclerView = findViewById(R.id.mainRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+        adapter = new ShoeItemAdapter(this);
+
+    }
+
+    @Override
+    public void onCardClicked(ShoeItem shoe) {
+
+        Intent intent = new Intent(MainActivity.this, DetailedActivity.class);
+        intent.putExtra("shoeItem", shoe);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onAddToCartBtnClicked(ShoeItem shoeItem) {
+        ShoeCart shoeCart = new ShoeCart();
+        shoeCart.setShoeName(shoeItem.getShoeName());
+        shoeCart.setShoeBrandName(shoeItem.getShoeBrandName());
+        shoeCart.setShoePrice(shoeItem.getShoePrice());
+        shoeCart.setShoeImage(shoeItem.getShoeImage());
+
+        final int[] quantity = {1};
+        final int[] id = new int[1];
+
+        if (!shoeCartList.isEmpty()) {
+            for (int i = 0; i < shoeCartList.size(); i++) {
+                if (shoeCart.getShoeName().equals(shoeCartList.get(i).getShoeName())) {
+                    quantity[0] = shoeCartList.get(i).getQuantity();
+                    quantity[0]++;
+                    id[0] = shoeCartList.get(i).getId();
+                }
+            }
+        }
+
+        Log.d("TAG", "onAddToCartBtnClicked: " + quantity[0]);
+
+        if (quantity[0] == 1) {
+            shoeCart.setQuantity(quantity[0]);
+            shoeCart.setTotalItemPrice(quantity[0] * shoeCart.getShoePrice());
+            viewModel.insertCartItem(shoeCart);
+        } else {
+            viewModel.updateQuantity(id[0], quantity[0]);
+            viewModel.updatePrice(id[0], quantity[0] * shoeCart.getShoePrice());
+        }
+
+        makeSnackBar("Item Added To Cart");
+    }
 }
