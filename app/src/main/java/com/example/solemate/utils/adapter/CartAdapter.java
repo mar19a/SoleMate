@@ -77,3 +77,35 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
             return shoeCartList.size();
         }
     }
+
+
+    public class CartViewHodler extends RecyclerView.ViewHolder {
+
+        private TextView shoeNameTv, shoeBrandNameTv, shoePriceTv, shoeQuantity;
+        private ImageView deleteShoeBtn;
+        private ImageView shoeImageView;
+        private ImageButton addQuantityBtn, minusQuantityBtn;
+
+        public CartViewHodler(@NonNull View itemView) {
+            super(itemView);
+
+            shoeNameTv = itemView.findViewById(R.id.eachCartItemName);
+            shoeBrandNameTv = itemView.findViewById(R.id.eachCartItemBrandNameTv);
+            shoePriceTv = itemView.findViewById(R.id.eachCartItemPriceTv);
+            deleteShoeBtn = itemView.findViewById(R.id.eachCartItemDeleteBtn);
+            shoeImageView = itemView.findViewById(R.id.eachCartItemIV);
+            shoeQuantity = itemView.findViewById(R.id.eachCartItemQuantityTV);
+            addQuantityBtn = itemView.findViewById(R.id.eachCartItemAddQuantityBtn);
+            minusQuantityBtn = itemView.findViewById(R.id.eachCartItemMinusQuantityBtn);
+        }
+    }
+
+    public interface CartClickedListeners {
+        void onDeleteClicked(ShoeCart shoeCart);
+
+        void onPlusClicked(ShoeCart shoeCart);
+
+        void onMinusClicked(ShoeCart shoeCart);
+    }
+}
+
