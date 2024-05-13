@@ -54,4 +54,28 @@ public class ShoeItemAdapter extends RecyclerView.Adapter<ShoeItemAdapter.ShoeIt
         });
     }
 
+    @Override
+    public int getItemCount() {
+        if (shoeItemList == null){
+            return 0;
+        }else{
+            return shoeItemList.size();
+        }
+    }
+    public class ShoeItemViewHolder extends RecyclerView.ViewHolder{
+        private ImageView shoeImageView , addToCartBtn;
+        private TextView shoeNameTv, shoeBrandNameTv, shoePriceTv;
+        private CardView cardView;
+        public ShoeItemViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            cardView = itemView.findViewById(R.id.eachShoeCardView);
+            addToCartBtn = itemView.findViewById(R.id.eachShoeAddToCartBtn);
+            shoeNameTv = itemView.findViewById(R.id.eachShoeName);
+            shoeImageView = itemView.findViewById(R.id.eachShoeIv);
+            shoeBrandNameTv = itemView.findViewById(R.id.eachShoeBrandNameTv);
+            shoePriceTv = itemView.findViewById(R.id.eachShoePriceTv);
+        }
+    }
+
 }
