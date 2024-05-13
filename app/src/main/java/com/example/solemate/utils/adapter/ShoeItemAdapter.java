@@ -77,5 +77,9 @@ public class ShoeItemAdapter extends RecyclerView.Adapter<ShoeItemAdapter.ShoeIt
             shoePriceTv = itemView.findViewById(R.id.eachShoePriceTv);
         }
     }
+    public interface ShoeClickedListeners{
+        void onCardClicked(ShoeItem shoe);
+        void onAddToCartBtnClicked(ShoeItem shoeItem);
+    }
 
 }
