@@ -50,5 +50,24 @@ public class ShoeItem implements Parcelable {
         this.shoeImage = shoeImage;
     }
 
+    public double getShoePrice() {
+        return shoePrice;
+    }
 
+    public void setShoePrice(double shoePrice) {
+        this.shoePrice = shoePrice;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(shoeName);
+        parcel.writeString(shoeBrandName);
+        parcel.writeInt(shoeImage);
+        parcel.writeDouble(shoePrice);
+    }
 }
