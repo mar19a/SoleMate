@@ -46,5 +46,32 @@ public class CartRepo {
         });
     }
 
+    public void updateQuantity(int id , int quantity) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                cartDAO.updateQuantity(id, quantity);
+            }
+        });
+    }
+
+    public void updatePrice(int id , double price){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                cartDAO.updatePrice(id , price);
+            }
+        });
+    }
+
+    public void deleteAllCartItems(){
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                cartDAO.deleteAllItems();
+            }
+        });
+    }
+
 
 }
