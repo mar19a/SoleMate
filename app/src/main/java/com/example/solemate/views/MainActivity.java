@@ -50,5 +50,27 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
             }
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        viewModel.getAllCartItems().observe(this, new Observer<List<ShoeCart>>() {
+            @Override
+            public void onChanged(List<ShoeCart> shoeCarts) {
+                shoeCartList.addAll(shoeCarts);
+            }
+        });
+    }
+
+    private void setUpList() {
+        shoeItemList.add(new ShoeItem("Nike Revolution", "Nike", R.drawable.nike_revolution_road, 15));
+        shoeItemList.add(new ShoeItem("Nike Flex Run 2021", "NIKE", R.drawable.flex_run_road_running, 20));
+        shoeItemList.add(new ShoeItem("Court Zoom Vapor", "NIKE", R.drawable.nikecourt_zoom_vapor_cage, 18));
+        shoeItemList.add(new ShoeItem("EQ21 Run COLD.RDY", "ADIDAS", R.drawable.adidas_eq_run, 16.5));
+        shoeItemList.add(new ShoeItem("Adidas Ozelia", "ADIDAS", R.drawable.adidas_ozelia_shoes_grey, 20));
+        shoeItemList.add(new ShoeItem("Adidas Questar", "ADIDAS", R.drawable.adidas_questar_shoes, 22));
+        shoeItemList.add(new ShoeItem("Adidas Questar", "ADIDAS", R.drawable.adidas_questar_shoes, 12));
+        shoeItemList.add(new ShoeItem("Adidas Ultraboost", "ADIDAS", R.drawable.adidas_ultraboost, 15));
+
+    }
 }
