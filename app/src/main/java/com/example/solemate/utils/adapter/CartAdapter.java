@@ -68,3 +68,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
             }
         });
     }
+
+    @Override
+    public int getItemCount() {
+        if (shoeCartList == null) {
+            return 0;
+        } else {
+            return shoeCartList.size();
+        }
+    }
