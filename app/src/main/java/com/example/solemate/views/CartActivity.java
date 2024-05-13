@@ -18,6 +18,7 @@ import com.example.solemate.utils.model.ShoeCart;
 import com.example.solemate.viewmodel.CartViewModel;
 
 import java.util.List;
+
 public class CartActivity extends AppCompatActivity implements CartAdapter.CartClickedListeners {
 
     private RecyclerView recyclerView;
@@ -59,6 +60,7 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         });
     }
 
+
     private void initializeVariables() {
 
         cartAdapter = new CartAdapter(this);
@@ -88,5 +90,16 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.CartC
         cartAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onMinusClicked(ShoeCart shoeCart) {
+        int quantity = shoeCart.getQuantity() - 1;
+        if (quantity != 0){
+            cartViewModel.updateQuantity(shoeCart.getId() , quantity);
+            cartViewModel.updatePrice(shoeCart.getId() , quantity*shoeCart.getShoePrice());
+            cartAdapter.notifyDataSetChanged();
+        }else{
+            cartViewModel.deleteCartItem(shoeCart);
+        }
 
+    }
 }
