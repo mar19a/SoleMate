@@ -26,4 +26,19 @@ public class CartViewModel extends AndroidViewModel {
         cartRepo.insertCartItem(shoeCart);
     }
 
+    public void updateQuantity(int id, int quantity) {
+        cartRepo.updateQuantity(id, quantity);
+    }
+
+    public void updatePrice(int id, double price) {
+        cartRepo.updatePrice(id, price);
+    }
+
+    public void deleteCartItem(ShoeCart shoeCart) {
+        cartRepo.deleteCartItem(shoeCart);
+    }
+
+    public void deleteAllCartItems() {
+        cartRepo.deleteAllCartItems();
+    }
 }
