@@ -131,4 +131,13 @@ public class MainActivity extends AppCompatActivity implements ShoeItemAdapter.S
 
         makeSnackBar("Item Added To Cart");
     }
+    private void makeSnackBar(String msg) {
+        Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_SHORT)
+                .setAction("Go to Cart", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+                    }
+                }).show();
+    }
 }
