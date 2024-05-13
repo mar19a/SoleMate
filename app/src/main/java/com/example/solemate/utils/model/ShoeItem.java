@@ -15,4 +15,40 @@ public class ShoeItem implements Parcelable {
         this.shoeImage = shoeImage;
         this.shoePrice = shoePrice;
     }
+    public static final Creator<ShoeItem> CREATOR = new Creator<ShoeItem>() {
+        @Override
+        public ShoeItem createFromParcel(Parcel in) {
+            return new ShoeItem(in);
+        }
+
+        @Override
+        public ShoeItem[] newArray(int size) {
+            return new ShoeItem[size];
+        }
+    };
+    public String getShoeName() {
+        return shoeName;
+    }
+
+    public void setShoeName(String shoeName) {
+        this.shoeName = shoeName;
+    }
+
+    public String getShoeBrandName() {
+        return shoeBrandName;
+    }
+
+    public void setShoeBrandName(String shoeBrandName) {
+        this.shoeBrandName = shoeBrandName;
+    }
+
+    public int getShoeImage() {
+        return shoeImage;
+    }
+
+    public void setShoeImage(int shoeImage) {
+        this.shoeImage = shoeImage;
+    }
+
+
 }
