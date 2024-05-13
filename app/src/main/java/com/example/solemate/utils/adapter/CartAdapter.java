@@ -27,3 +27,44 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHodler
         this.shoeCartList = shoeCartList;
         notifyDataSetChanged();
     }
+
+    @NonNull
+    @Override
+    public CartViewHodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.each_cart_item, parent, false);
+        return new CartViewHodler(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CartViewHodler holder, int position) {
+
+        ShoeCart shoeCart = shoeCartList.get(position);
+        holder.shoeImageView.setImageResource(shoeCart.getShoeImage());
+        holder.shoeNameTv.setText(shoeCart.getShoeName());
+        holder.shoeBrandNameTv.setText(shoeCart.getShoeBrandName());
+        holder.shoeQuantity.setText(shoeCart.getQuantity() + "");
+        holder.shoePriceTv.setText(shoeCart.getTotalItemPrice() + "");
+
+
+        holder.deleteShoeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cartClickedListeners.onDeleteClicked(shoeCart);
+            }
+        });
+
+
+        holder.addQuantityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cartClickedListeners.onPlusClicked(shoeCart);
+            }
+        });
+
+        holder.minusQuantityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cartClickedListeners.onMinusClicked(shoeCart);
+            }
+        });
+    }
